@@ -1,0 +1,6155 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#fff8f5">
+
+    <title>Mi carrito | Wolf Bubble Tea</title>
+
+    <meta
+        name="description"
+        content="Revisa tu pedido de Wolf Bubble Tea, personaliza tus productos y solicita tu pedido directamente por WhatsApp."
+    >
+
+
+    <!-- ========================================
+         GOOGLE FONTS
+    ========================================= -->
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+
+        /* ==========================================
+           01. VARIABLES GENERALES
+        ========================================== */
+
+
+        :root {
+
+            --primary: #ed77a8;
+            --primary-dark: #d95691;
+
+            --secondary: #a98ade;
+            --accent: #ffad79;
+
+            --dark: #291e2c;
+            --text: #574d58;
+            --muted: #908590;
+
+            --cream: #fff8f5;
+            --white: #ffffff;
+
+            --soft-pink: #ffe8f0;
+            --soft-purple: #f0eafa;
+            --soft-orange: #fff0e7;
+            --soft-green: #e8f7ee;
+
+            --success: #48a77f;
+            --danger: #dc6280;
+
+            --font-main: 'DM Sans', sans-serif;
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+
+            --radius: 23px;
+
+            --shadow:
+                0 15px 45px rgba(66, 35, 60, 0.09);
+
+            --transition:
+                all .3s ease;
+
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+            scroll-padding-top: 110px;
+
+        }
+
+
+        body {
+
+            background: var(--cream);
+
+            color: var(--dark);
+
+            font-family: var(--font-main);
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        button,
+        input,
+        select,
+        textarea {
+
+            font-family: inherit;
+
+        }
+
+
+        button {
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+
+
+        img {
+
+            display: block;
+
+            max-width: 100%;
+
+        }
+
+
+        .container {
+
+            width: min(1180px, 90%);
+
+            margin: auto;
+
+        }
+
+
+        .hidden {
+
+            display: none !important;
+
+        }
+
+
+        /* ==========================================
+           02. BOTONES GENERALES
+        ========================================== */
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            padding: 14px 24px;
+
+            border-radius: 50px;
+
+            font-size: .84rem;
+
+            font-weight: 800;
+
+            border: 1px solid transparent;
+
+            transition: var(--transition);
+
+            cursor: pointer;
+
+        }
+
+
+        .btn-primary {
+
+            background: var(--primary);
+
+            color: var(--white);
+
+            box-shadow:
+                0 9px 25px rgba(237, 119, 168, .25);
+
+        }
+
+
+        .btn-primary:hover {
+
+            background: var(--primary-dark);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        .btn-outline {
+
+            background: transparent;
+
+            color: var(--dark);
+
+            border-color: rgba(41, 30, 44, .15);
+
+        }
+
+
+        .btn-outline:hover {
+
+            background: var(--dark);
+
+            color: var(--white);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        /* ==========================================
+           03. NAVBAR
+        ========================================== */
+
+
+        .navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            width: 100%;
+
+            background: rgba(255, 248, 245, .94);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(41, 30, 44, .06);
+
+        }
+
+
+        .nav-content {
+
+            min-height: 82px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .brand img {
+
+            width: 49px;
+            height: 49px;
+
+            object-fit: contain;
+
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1.05;
+
+        }
+
+
+        .brand-text strong {
+
+            font-family: var(--font-heading);
+
+            font-size: 1.13rem;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .brand-text span {
+
+            font-size: .62rem;
+
+            letter-spacing: 3px;
+
+            color: var(--primary-dark);
+
+            font-weight: 800;
+
+            margin-top: 5px;
+
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+
+            list-style: none;
+
+        }
+
+
+        .nav-links a {
+
+            font-size: .83rem;
+
+            font-weight: 700;
+
+            color: var(--text);
+
+            transition: var(--transition);
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--primary-dark);
+
+        }
+
+
+        .nav-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .cart-link {
+
+            position: relative;
+
+            width: 47px;
+            height: 47px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: var(--soft-pink);
+
+            font-size: 1.25rem;
+
+        }
+
+
+        .cart-badge {
+
+            position: absolute;
+
+            top: -3px;
+            right: -3px;
+
+            min-width: 20px;
+            height: 20px;
+
+            display: grid;
+
+            place-items: center;
+
+            padding: 0 5px;
+
+            background: var(--primary-dark);
+
+            color: var(--white);
+
+            border: 2px solid var(--cream);
+
+            border-radius: 20px;
+
+            font-size: .62rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .nav-order {
+
+            padding: 13px 19px;
+
+            background: var(--dark);
+
+            color: var(--white);
+
+            border-radius: 50px;
+
+            font-size: .77rem;
+
+            font-weight: 800;
+
+            transition: var(--transition);
+
+        }
+
+
+        .nav-order:hover {
+
+            background: var(--primary-dark);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        .menu-toggle {
+
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: var(--soft-pink);
+
+            color: var(--dark);
+
+            font-size: 1.3rem;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ==========================================
+           04. HERO DEL CARRITO
+        ========================================== */
+
+
+        .cart-hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(237, 119, 168, .2),
+                    transparent 27%
+                ),
+
+                radial-gradient(
+                    circle at 10% 100%,
+                    rgba(169, 138, 222, .18),
+                    transparent 35%
+                ),
+
+                var(--cream);
+
+        }
+
+
+        .hero-content {
+
+            min-height: 350px;
+
+            display: grid;
+
+            grid-template-columns: 1fr .65fr;
+
+            align-items: center;
+
+            gap: 40px;
+
+            padding: 60px 0;
+
+        }
+
+
+        .hero-tag {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 9px 15px;
+
+            border-radius: 50px;
+
+            background: var(--white);
+
+            color: var(--primary-dark);
+
+            font-size: .69rem;
+
+            letter-spacing: 1.5px;
+
+            font-weight: 800;
+
+            box-shadow: var(--shadow);
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .hero-tag span {
+
+            width: 8px;
+            height: 8px;
+
+            background: var(--primary);
+
+            border-radius: 50%;
+
+        }
+
+
+        .hero-content h1 {
+
+            font-family: var(--font-heading);
+
+            font-size: clamp(2.8rem, 5vw, 4.4rem);
+
+            font-weight: 900;
+
+            letter-spacing: -3px;
+
+            line-height: 1.1;
+
+        }
+
+
+        .hero-content h1 span {
+
+            color: var(--primary-dark);
+
+        }
+
+
+        .hero-description {
+
+            max-width: 540px;
+
+            color: var(--muted);
+
+            font-size: .92rem;
+
+            line-height: 1.9;
+
+            margin-top: 20px;
+
+        }
+
+
+        .hero-visual {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        .hero-circle {
+
+            width: 220px;
+            height: 220px;
+
+            border-radius: 50%;
+
+            display: grid;
+
+            place-items: center;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    #ffe5ef,
+                    #f0eafa
+                );
+
+            box-shadow: var(--shadow);
+
+            position: relative;
+
+        }
+
+
+        .hero-circle::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: -13px;
+
+            border-radius: 50%;
+
+            border: 1px dashed rgba(217, 86, 145, .35);
+
+        }
+
+
+        .hero-circle img {
+
+            width: 80%;
+            height: 80%;
+
+            object-fit: contain;
+
+            animation: mascotFloat 4s ease-in-out infinite;
+
+        }
+
+
+        @keyframes mascotFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+
+        /* ==========================================
+           05. INDICADOR DE PROCESO
+        ========================================== */
+
+
+        .checkout-progress-section {
+
+            padding: 22px 0;
+
+            background: var(--white);
+
+            border-bottom:
+                1px solid rgba(41, 30, 44, .05);
+
+        }
+
+
+        .progress-content {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .progress-step {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .progress-number {
+
+            width: 32px;
+            height: 32px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: var(--soft-pink);
+
+            color: var(--primary-dark);
+
+            font-size: .72rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .progress-step.active .progress-number {
+
+            background: var(--primary);
+
+            color: var(--white);
+
+        }
+
+
+        .progress-step strong {
+
+            font-size: .74rem;
+
+            font-weight: 800;
+
+        }
+
+
+        .progress-line {
+
+            width: 65px;
+
+            height: 1px;
+
+            background: #eadfe6;
+
+        }
+
+
+        /* ==========================================
+           06. CONTENIDO PRINCIPAL
+        ========================================== */
+
+
+        .cart-page {
+
+            padding: 75px 0 100px;
+
+        }
+
+
+        .page-heading {
+
+            margin-bottom: 38px;
+
+        }
+
+
+        .page-heading h2 {
+
+            font-family: var(--font-heading);
+
+            font-size: clamp(2rem, 4vw, 2.8rem);
+
+            font-weight: 900;
+
+            letter-spacing: -1.6px;
+
+        }
+
+
+        .page-heading p {
+
+            color: var(--muted);
+
+            font-size: .87rem;
+
+            line-height: 1.8;
+
+            margin-top: 10px;
+
+        }
+
+
+        .cart-layout {
+
+            display: grid;
+
+            grid-template-columns: minmax(0, 1fr) 370px;
+
+            gap: 30px;
+
+            align-items: start;
+
+        }
+
+
+        .cart-main {
+
+            min-width: 0;
+
+        }
+
+
+        .cart-panel {
+
+            background: var(--white);
+
+            border-radius: var(--radius);
+
+            border: 1px solid rgba(41, 30, 44, .05);
+
+            box-shadow:
+                0 8px 30px rgba(66, 35, 60, .035);
+
+            overflow: hidden;
+
+        }
+
+
+        /* ==========================================
+           07. ENCABEZADO DE PRODUCTOS
+        ========================================== */
+
+
+        .cart-panel-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 25px 28px;
+
+            border-bottom: 1px solid #f0edf0;
+
+        }
+
+
+        .cart-panel-header h3 {
+
+            font-size: 1rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .cart-panel-header p {
+
+            font-size: .72rem;
+
+            color: var(--muted);
+
+            margin-top: 5px;
+
+        }
+
+
+        .clear-cart-btn {
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--danger);
+
+            font-size: .72rem;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+
+        }
+
+
+        .clear-cart-btn:hover {
+
+            opacity: .7;
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==========================================
+           08. LISTA DE PRODUCTOS
+        ========================================== */
+
+
+        .cart-items {
+
+            padding: 5px 28px;
+
+        }
+
+
+        .cart-item {
+
+            display: grid;
+
+            grid-template-columns: 105px minmax(0, 1fr) auto;
+
+            align-items: center;
+
+            gap: 19px;
+
+            padding: 25px 0;
+
+            border-bottom: 1px solid #f1edf0;
+
+        }
+
+
+        .cart-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        /* Imagen */
+
+        .cart-item-image {
+
+            width: 105px;
+            height: 105px;
+
+            border-radius: 19px;
+
+            overflow: hidden;
+
+            background: var(--soft-pink);
+
+            position: relative;
+
+            display: grid;
+
+            place-items: center;
+
+        }
+
+
+        .cart-item-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .cart-item-image.image-fallback img {
+
+            display: none;
+
+        }
+
+
+        .cart-item-emoji {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: none;
+
+            place-items: center;
+
+            font-size: 2.7rem;
+
+            background: var(--soft-pink);
+
+        }
+
+
+        .cart-item-image.image-fallback .cart-item-emoji {
+
+            display: grid;
+
+        }
+
+
+        /* Información */
+
+        .cart-item-info {
+
+            min-width: 0;
+
+        }
+
+
+        .cart-item-category {
+
+            display: inline-flex;
+
+            padding: 5px 10px;
+
+            background: var(--soft-purple);
+
+            color: #8e6bbd;
+
+            border-radius: 50px;
+
+            font-size: .59rem;
+
+            font-weight: 900;
+
+            letter-spacing: .6px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .cart-item-name {
+
+            font-family: var(--font-heading);
+
+            font-size: .98rem;
+
+            font-weight: 900;
+
+            margin-top: 9px;
+
+            overflow-wrap: anywhere;
+
+        }
+
+
+        .cart-item-variant {
+
+            display: block;
+
+            font-size: .72rem;
+
+            color: var(--muted);
+
+            margin-top: 5px;
+
+        }
+
+
+        .cart-item-unit-price {
+
+            font-size: .73rem;
+
+            color: var(--text);
+
+            font-weight: 700;
+
+            margin-top: 7px;
+
+        }
+
+
+        /* Controles */
+
+        .cart-item-controls {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-end;
+
+            gap: 12px;
+
+        }
+
+
+        .quantity-control {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 11px;
+
+            padding: 6px;
+
+            border-radius: 50px;
+
+            background: var(--cream);
+
+        }
+
+
+        .quantity-btn {
+
+            width: 28px;
+            height: 28px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: var(--white);
+
+            color: var(--dark);
+
+            font-weight: 900;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+
+            box-shadow: 0 2px 7px rgba(0,0,0,.04);
+
+        }
+
+
+        .quantity-btn:hover {
+
+            background: var(--primary);
+
+            color: var(--white);
+
+        }
+
+
+        .quantity-value {
+
+            min-width: 17px;
+
+            text-align: center;
+
+            font-size: .78rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .item-subtotal {
+
+            font-family: var(--font-heading);
+
+            font-size: .95rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .remove-item-btn {
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--muted);
+
+            font-size: .71rem;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+
+        }
+
+
+        .remove-item-btn:hover {
+
+            color: var(--danger);
+
+        }
+
+
+        /* ==========================================
+           09. FORMULARIO DEL CLIENTE
+        ========================================== */
+
+
+        .customer-panel {
+
+            margin-top: 26px;
+
+            padding: 30px;
+
+            background: var(--white);
+
+            border-radius: var(--radius);
+
+            border: 1px solid rgba(41, 30, 44, .05);
+
+            box-shadow:
+                0 8px 30px rgba(66, 35, 60, .035);
+
+        }
+
+
+        .customer-heading {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            margin-bottom: 27px;
+
+        }
+
+
+        .customer-heading-icon {
+
+            width: 47px;
+            height: 47px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 15px;
+
+            background: var(--soft-purple);
+
+            font-size: 1.3rem;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .customer-heading h3 {
+
+            font-size: 1rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .customer-heading p {
+
+            color: var(--muted);
+
+            font-size: .73rem;
+
+            line-height: 1.7;
+
+            margin-top: 5px;
+
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 20px;
+
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+            min-width: 0;
+
+        }
+
+
+        .form-group.full-width {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        .form-group label {
+
+            color: var(--text);
+
+            font-size: .76rem;
+
+            font-weight: 800;
+
+        }
+
+
+        .required {
+
+            color: var(--primary-dark);
+
+            margin-left: 3px;
+
+        }
+
+
+        .form-control {
+
+            width: 100%;
+
+            min-height: 49px;
+
+            padding: 12px 15px;
+
+            border: 1px solid #e9e2e8;
+
+            border-radius: 12px;
+
+            background: var(--cream);
+
+            color: var(--dark);
+
+            outline: none;
+
+            font-size: .8rem;
+
+            transition: var(--transition);
+
+        }
+
+
+        .form-control:focus {
+
+            border-color: var(--primary);
+
+            background: var(--white);
+
+            box-shadow:
+                0 0 0 4px rgba(237,119,168,.09);
+
+        }
+
+
+        .form-control::placeholder {
+
+            color: #aaa1aa;
+
+        }
+
+
+        textarea.form-control {
+
+            resize: vertical;
+
+            min-height: 100px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .form-hint {
+
+            font-size: .67rem;
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ==========================================
+           10. MODALIDAD DE ENTREGA
+        ========================================== */
+
+
+        .delivery-options {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 13px;
+
+        }
+
+
+        .delivery-option {
+
+            position: relative;
+
+            display: block;
+
+            cursor: pointer;
+
+        }
+
+
+        .delivery-option input {
+
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        .delivery-option-content {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 17px;
+
+            height: 100%;
+
+            border: 1px solid #e9e2e8;
+
+            border-radius: 15px;
+
+            background: var(--cream);
+
+            transition: var(--transition);
+
+        }
+
+
+        .delivery-option input:checked + .delivery-option-content {
+
+            border-color: var(--primary);
+
+            background: var(--soft-pink);
+
+            box-shadow:
+                0 0 0 3px rgba(237,119,168,.09);
+
+        }
+
+
+        .delivery-icon {
+
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 13px;
+
+            background: var(--white);
+
+            font-size: 1.3rem;
+
+        }
+
+
+        .delivery-text strong {
+
+            display: block;
+
+            font-size: .77rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .delivery-text small {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: .66rem;
+
+            line-height: 1.5;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* Dirección */
+
+        .delivery-address {
+
+            display: none;
+
+            margin-top: 19px;
+
+            padding: 19px;
+
+            background: #fff9fc;
+
+            border: 1px solid #f5dbe7;
+
+            border-radius: 15px;
+
+        }
+
+
+        .delivery-address.visible {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 17px;
+
+            animation: slideDown .3s ease;
+
+        }
+
+
+        @keyframes slideDown {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(-8px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+        .delivery-note {
+
+            margin-top: 15px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 9px;
+
+            padding: 13px;
+
+            background: var(--soft-purple);
+
+            color: #76608e;
+
+            border-radius: 12px;
+
+            font-size: .69rem;
+
+            line-height: 1.65;
+
+        }
+
+
+        /* ==========================================
+           11. RESUMEN DEL PEDIDO
+        ========================================== */
+
+
+        .cart-sidebar {
+
+            position: sticky;
+
+            top: 108px;
+
+        }
+
+
+        .summary-panel {
+
+            background: var(--white);
+
+            border-radius: var(--radius);
+
+            border: 1px solid rgba(41,30,44,.05);
+
+            box-shadow:
+                0 10px 35px rgba(66,35,60,.055);
+
+            overflow: hidden;
+
+        }
+
+
+        .summary-header {
+
+            padding: 25px;
+
+            background: var(--soft-pink);
+
+        }
+
+
+        .summary-header h3 {
+
+            font-size: 1.02rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .summary-header p {
+
+            font-size: .72rem;
+
+            color: var(--muted);
+
+            margin-top: 6px;
+
+        }
+
+
+        .summary-content {
+
+            padding: 25px;
+
+        }
+
+
+        .summary-lines {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+
+        }
+
+
+        .summary-line {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: .78rem;
+
+        }
+
+
+        .summary-line span:first-child {
+
+            color: var(--muted);
+
+        }
+
+
+        .summary-line strong {
+
+            font-weight: 800;
+
+            text-align: right;
+
+        }
+
+
+        .summary-divider {
+
+            border: none;
+
+            border-top: 1px dashed #e8dfe7;
+
+            margin: 20px 0;
+
+        }
+
+
+        .summary-total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .summary-total span {
+
+            font-size: .85rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .summary-total strong {
+
+            font-family: var(--font-heading);
+
+            font-size: 1.7rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .summary-warning {
+
+            margin-top: 19px;
+
+            padding: 13px;
+
+            border-radius: 12px;
+
+            background: var(--soft-orange);
+
+            color: #976d55;
+
+            font-size: .68rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        .checkout-btn {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 23px;
+
+            padding: 16px 20px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: var(--primary);
+
+            color: var(--white);
+
+            font-size: .84rem;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+
+            box-shadow:
+                0 9px 25px rgba(237,119,168,.24);
+
+        }
+
+
+        .checkout-btn:hover:not(:disabled) {
+
+            background: var(--primary-dark);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        .checkout-btn:disabled {
+
+            opacity: .5;
+
+            cursor: not-allowed;
+
+            box-shadow: none;
+
+        }
+
+
+        .summary-security {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 16px;
+
+            font-size: .67rem;
+
+            color: var(--muted);
+
+        }
+
+
+        /* ==========================================
+           12. INFORMACIÓN ADICIONAL
+        ========================================== */
+
+
+        .summary-help {
+
+            background: var(--soft-purple);
+
+            border-radius: 17px;
+
+            padding: 20px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .summary-help h4 {
+
+            font-size: .8rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .summary-help p {
+
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: .7rem;
+
+            line-height: 1.75;
+
+        }
+
+
+        .summary-help a {
+
+            display: inline-block;
+
+            margin-top: 12px;
+
+            color: #8668b1;
+
+            font-size: .72rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .summary-help a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==========================================
+           13. CARRITO VACÍO
+        ========================================== */
+
+
+        .empty-state {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 85px 25px;
+
+            background: var(--white);
+
+            border: 1px solid rgba(41,30,44,.05);
+
+            border-radius: 28px;
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+        .empty-state.visible {
+
+            display: block;
+
+        }
+
+
+        .empty-illustration {
+
+            width: 150px;
+            height: 150px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffe6f0,
+                    #f0eafa
+                );
+
+        }
+
+
+        .empty-illustration img {
+
+            width: 80%;
+            height: 80%;
+
+            object-fit: contain;
+
+        }
+
+
+        .empty-state h2 {
+
+            font-family: var(--font-heading);
+
+            font-size: 1.8rem;
+
+            font-weight: 900;
+
+            margin-top: 30px;
+
+        }
+
+
+        .empty-state p {
+
+            max-width: 430px;
+
+            margin: 13px auto 25px;
+
+            color: var(--muted);
+
+            font-size: .85rem;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* ==========================================
+           14. BENEFICIOS
+        ========================================== */
+
+
+        .benefits-section {
+
+            margin-top: 35px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            gap: 15px;
+
+        }
+
+
+        .benefit-card {
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 12px;
+
+            border-radius: 17px;
+
+            background: var(--white);
+
+            border: 1px solid rgba(41,30,44,.04);
+
+        }
+
+
+        .benefit-icon {
+
+            width: 39px;
+            height: 39px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 13px;
+
+            background: var(--soft-pink);
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .benefit-card strong {
+
+            display: block;
+
+            font-size: .76rem;
+
+            font-weight: 900;
+
+        }
+
+
+        .benefit-card p {
+
+            color: var(--muted);
+
+            font-size: .67rem;
+
+            line-height: 1.65;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* ==========================================
+           15. CONFIRMACIÓN / WHATSAPP
+        ========================================== */
+
+
+        .whatsapp-information {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 12px;
+
+            padding: 18px;
+
+            background: var(--soft-green);
+
+            border-radius: 15px;
+
+            color: #427c5e;
+
+            font-size: .73rem;
+
+            line-height: 1.75;
+
+        }
+
+
+        .whatsapp-information strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            font-size: .78rem;
+
+        }
+
+
+        /* ==========================================
+           16. MENSAJES DE VALIDACIÓN
+        ========================================== */
+
+
+        .form-message {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 14px 16px;
+
+            background: #fff0f0;
+
+            color: #bb4c60;
+
+            border: 1px solid #f1ced4;
+
+            border-radius: 12px;
+
+            font-size: .75rem;
+
+            line-height: 1.6;
+
+        }
+
+
+        .form-message.visible {
+
+            display: block;
+
+        }
+
+
+        .form-control.invalid {
+
+            border-color: var(--danger);
+
+            background: #fff8f8;
+
+        }
+
+
+        /* ==========================================
+           17. FOOTER
+        ========================================== */
+
+
+        .footer {
+
+            background: var(--dark);
+
+            color: var(--white);
+
+            padding: 60px 0 25px;
+
+            margin-top: 35px;
+
+        }
+
+
+        .footer-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 35px;
+
+            padding-bottom: 40px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.12);
+
+        }
+
+
+        .footer .brand-text strong {
+
+            color: var(--white);
+
+        }
+
+
+        .footer .brand-text span {
+
+            color: var(--primary);
+
+        }
+
+
+        .footer-description {
+
+            max-width: 330px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: .82rem;
+
+            line-height: 1.8;
+
+            margin-top: 15px;
+
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 25px;
+
+        }
+
+
+        .footer-links a {
+
+            font-size: .79rem;
+
+            color: rgba(255,255,255,.72);
+
+            transition: var(--transition);
+
+        }
+
+
+        .footer-links a:hover {
+
+            color: var(--primary);
+
+        }
+
+
+        .footer-bottom {
+
+            padding-top: 24px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            color: rgba(255,255,255,.42);
+
+            font-size: .72rem;
+
+        }
+
+
+        .footer-bottom a {
+
+            color: var(--primary);
+
+            font-weight: 800;
+
+        }
+
+
+        /* ==========================================
+           18. TOAST
+        ========================================== */
+
+
+        .toast {
+
+            position: fixed;
+
+            bottom: 25px;
+            left: 50%;
+
+            transform: translate(-50%, 25px);
+
+            z-index: 2000;
+
+            max-width: 90vw;
+
+            padding: 14px 21px;
+
+            border-radius: 50px;
+
+            background: var(--dark);
+
+            color: var(--white);
+
+            font-size: .77rem;
+
+            font-weight: 800;
+
+            text-align: center;
+
+            box-shadow: var(--shadow);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: var(--transition);
+
+            pointer-events: none;
+
+        }
+
+
+        .toast.visible {
+
+            opacity: 1;
+            visibility: visible;
+
+            transform: translate(-50%, 0);
+
+        }
+
+
+        /* ==========================================
+           19. ANIMACIONES
+        ========================================== */
+
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+
+        /* ==========================================
+           20. RESPONSIVE TABLET
+        ========================================== */
+
+
+        @media(max-width: 1050px) {
+
+            .cart-layout {
+
+                grid-template-columns:
+                    minmax(0, 1fr) 320px;
+
+                gap: 20px;
+
+            }
+
+
+            .cart-item {
+
+                grid-template-columns: 85px minmax(0, 1fr) auto;
+
+                gap: 14px;
+
+            }
+
+
+            .cart-item-image {
+
+                width: 85px;
+                height: 85px;
+
+            }
+
+
+            .cart-items {
+
+                padding-left: 20px;
+                padding-right: 20px;
+
+            }
+
+
+            .customer-panel {
+
+                padding: 24px;
+
+            }
+
+        }
+
+
+        /* ==========================================
+           21. RESPONSIVE TABLET PEQUEÑA
+        ========================================== */
+
+
+        @media(max-width: 780px) {
+
+
+            .nav-content {
+
+                min-height: 75px;
+
+            }
+
+
+            .menu-toggle {
+
+                display: grid;
+
+                place-items: center;
+
+            }
+
+
+            .nav-right {
+
+                position: absolute;
+
+                top: calc(100% + 1px);
+                left: 0;
+
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 18px;
+
+                padding: 0 5%;
+
+                background: var(--cream);
+
+                max-height: 0;
+
+                overflow: hidden;
+
+                visibility: hidden;
+
+                box-shadow:
+                    0 15px 25px rgba(40,25,40,.08);
+
+                transition: var(--transition);
+
+            }
+
+
+            .nav-right.active {
+
+                max-height: 430px;
+
+                visibility: visible;
+
+                padding: 20px 5% 25px;
+
+            }
+
+
+            .nav-links {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+            }
+
+
+            .nav-links a {
+
+                display: block;
+
+                padding: 13px 5px;
+
+            }
+
+
+            .nav-actions {
+
+                padding-bottom: 5px;
+
+            }
+
+
+            .nav-order {
+
+                flex: 1;
+
+                text-align: center;
+
+            }
+
+
+            .hero-content {
+
+                grid-template-columns: 1fr .45fr;
+
+                min-height: 300px;
+
+                gap: 20px;
+
+            }
+
+
+            .hero-circle {
+
+                width: 170px;
+                height: 170px;
+
+            }
+
+
+            .cart-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .cart-sidebar {
+
+                position: static;
+
+            }
+
+
+            .summary-panel {
+
+                max-width: none;
+
+            }
+
+
+            .benefits-section {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        /* ==========================================
+           22. RESPONSIVE MÓVIL
+        ========================================== */
+
+
+        @media(max-width: 540px) {
+
+
+            .container {
+
+                width: 90%;
+
+            }
+
+
+            .brand img {
+
+                width: 43px;
+                height: 43px;
+
+            }
+
+
+            .hero-content {
+
+                grid-template-columns: 1fr;
+
+                padding: 55px 0 35px;
+
+            }
+
+
+            .hero-content h1 {
+
+                font-size: clamp(2.7rem, 11vw, 3.5rem);
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .hero-description {
+
+                font-size: .84rem;
+
+            }
+
+
+            .hero-visual {
+
+                padding: 15px 0 5px;
+
+            }
+
+
+            .hero-circle {
+
+                width: 160px;
+                height: 160px;
+
+            }
+
+
+            .progress-content {
+
+                gap: 10px;
+
+                justify-content: space-between;
+
+            }
+
+
+            .progress-step {
+
+                gap: 6px;
+
+            }
+
+
+            .progress-step strong {
+
+                font-size: .63rem;
+
+            }
+
+
+            .progress-number {
+
+                width: 28px;
+                height: 28px;
+
+                font-size: .65rem;
+
+            }
+
+
+            .progress-line {
+
+                width: 15px;
+
+            }
+
+
+            .cart-page {
+
+                padding: 55px 0 70px;
+
+            }
+
+
+            .page-heading h2 {
+
+                font-size: 2rem;
+
+            }
+
+
+            .cart-panel-header {
+
+                padding: 21px 17px;
+
+            }
+
+
+            .cart-panel-header h3 {
+
+                font-size: .88rem;
+
+            }
+
+
+            .cart-item {
+
+                grid-template-columns: 72px minmax(0, 1fr);
+
+                gap: 12px;
+
+                padding: 20px 0;
+
+                position: relative;
+
+            }
+
+
+            .cart-item-image {
+
+                width: 72px;
+                height: 72px;
+
+                border-radius: 14px;
+
+            }
+
+
+            .cart-item-emoji {
+
+                font-size: 2rem;
+
+            }
+
+
+            .cart-item-name {
+
+                font-size: .84rem;
+
+                padding-right: 35px;
+
+            }
+
+
+            .cart-item-category {
+
+                font-size: .53rem;
+
+                padding: 4px 8px;
+
+            }
+
+
+            .cart-item-variant {
+
+                font-size: .67rem;
+
+            }
+
+
+            .cart-item-unit-price {
+
+                font-size: .66rem;
+
+            }
+
+
+            .cart-item-controls {
+
+                grid-column: 2;
+
+                flex-direction: row;
+
+                align-items: center;
+
+                justify-content: space-between;
+
+                margin-top: 4px;
+
+            }
+
+
+            .quantity-control {
+
+                gap: 9px;
+
+            }
+
+
+            .quantity-btn {
+
+                width: 26px;
+                height: 26px;
+
+            }
+
+
+            .item-subtotal {
+
+                font-size: .84rem;
+
+            }
+
+
+            .remove-item-btn {
+
+                position: absolute;
+
+                top: 21px;
+                right: 0;
+
+                font-size: .65rem;
+
+            }
+
+
+            .customer-panel {
+
+                padding: 21px 17px;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 16px;
+
+            }
+
+
+            .form-group.full-width {
+
+                grid-column: auto;
+
+            }
+
+
+            .delivery-options {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .delivery-option-content {
+
+                padding: 13px;
+
+            }
+
+
+            .delivery-address.visible {
+
+                grid-template-columns: 1fr;
+
+                padding: 15px;
+
+            }
+
+
+            .summary-content {
+
+                padding: 21px;
+
+            }
+
+
+            .summary-header {
+
+                padding: 21px;
+
+            }
+
+
+            .summary-total strong {
+
+                font-size: 1.5rem;
+
+            }
+
+
+            .empty-state {
+
+                padding: 60px 18px;
+
+            }
+
+
+            .empty-state h2 {
+
+                font-size: 1.55rem;
+
+            }
+
+
+            .empty-illustration {
+
+                width: 125px;
+                height: 125px;
+
+            }
+
+
+            .footer-top {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .footer-links {
+
+                gap: 17px;
+
+            }
+
+
+            .footer-bottom {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+
+        /* ==========================================
+           23. ACCESIBILIDAD
+        ========================================== */
+
+
+        @media(prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                scroll-behavior: auto !important;
+
+                animation-duration: .01ms !important;
+
+                transition-duration: .01ms !important;
+
+            }
+
+
+            .reveal {
+
+                opacity: 1;
+
+                transform: none;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ========================================= -->
+
+
+    <header class="navbar">
+
+        <div class="container nav-content">
+
+
+            <a href="index.html" class="brand">
+
+                <img
+                    src="logo.png"
+                    alt="Wolf Bubble Tea"
+                >
+
+                <div class="brand-text">
+
+                    <strong>WOLF</strong>
+
+                    <span>BUBBLE TEA</span>
+
+                </div>
+
+            </a>
+
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Abrir navegación"
+                aria-expanded="false"
+                aria-controls="navRight"
+            >
+
+                ☰
+
+            </button>
+
+
+
+            <div class="nav-right" id="navRight">
+
+
+                <ul class="nav-links">
+
+                    <li>
+
+                        <a href="index.html">
+                            Inicio
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="menu.html">
+                            Menú
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="menu.html#categorias">
+                            Categorías
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="menu.html#comida">
+                            Comida coreana
+                        </a>
+
+                    </li>
+
+                </ul>
+
+
+
+                <div class="nav-actions">
+
+
+                    <a
+                        href="carrito.html"
+                        class="cart-link"
+                        aria-label="Mi carrito"
+                    >
+
+                        🛒
+
+                        <span
+                            class="cart-badge"
+                            id="cartCount"
+                        >
+
+                            0
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        href="https://wa.me/50581265669?text=Hola%20Wolf%20Bubble%20Tea%2C%20tengo%20una%20consulta."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="nav-order"
+                    >
+
+                        Contactar ↗
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ========================================
+             HERO
+        ========================================= -->
+
+
+        <section class="cart-hero">
+
+            <div class="container hero-content">
+
+
+                <div class="hero-copy">
+
+
+                    <div class="hero-tag">
+
+                        <span></span>
+
+                        WOLF BUBBLE TEA · TU PEDIDO
+
+                    </div>
+
+
+                    <h1>
+
+                        Tus favoritos,
+
+                        <span>todos juntos.</span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Revisa tu selección, personaliza las
+                        cantidades y prepárate para disfrutar.
+                        Tu siguiente momento favorito comienza aquí.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="hero-visual">
+
+                    <div class="hero-circle">
+
+                        <img
+                            src="logo.png"
+                            alt="Mascota de Wolf Bubble Tea"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             PROGRESO
+        ========================================= -->
+
+
+        <section class="checkout-progress-section">
+
+            <div class="container progress-content">
+
+
+                <div class="progress-step active">
+
+                    <span class="progress-number">
+                        01
+                    </span>
+
+                    <strong>Tu carrito</strong>
+
+                </div>
+
+
+                <div class="progress-line"></div>
+
+
+                <div class="progress-step">
+
+                    <span class="progress-number">
+                        02
+                    </span>
+
+                    <strong>Tus datos</strong>
+
+                </div>
+
+
+                <div class="progress-line"></div>
+
+
+                <div class="progress-step">
+
+                    <span class="progress-number">
+                        03
+                    </span>
+
+                    <strong>WhatsApp</strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             CONTENIDO DEL CARRITO
+        ========================================= -->
+
+
+        <section class="cart-page">
+
+            <div class="container">
+
+
+                <!-- ENCABEZADO -->
+
+                <div class="page-heading">
+
+                    <h2>
+                        Mi carrito 🛒
+                    </h2>
+
+
+                    <p>
+                        Revisa tus productos antes de preparar
+                        tu pedido.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     CARRITO VACÍO
+                ========================================= -->
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                >
+
+
+                    <div class="empty-illustration">
+
+                        <img
+                            src="logo.png"
+                            alt="Wolf Bubble Tea"
+                        >
+
+                    </div>
+
+
+                    <h2>
+                        ¡Tu carrito está esperando!
+                    </h2>
+
+
+                    <p>
+
+                        Todavía no has agregado productos.
+                        Explora nuestro menú y encuentra algo
+                        delicioso para disfrutar.
+
+                    </p>
+
+
+                    <a
+                        href="menu.html"
+                        class="btn btn-primary"
+                    >
+
+                        Explorar el menú
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- ========================================
+                     LAYOUT DEL CARRITO
+                ========================================= -->
+
+
+                <form
+                    id="checkoutForm"
+                    class="cart-layout"
+                    novalidate
+                >
+
+
+                    <!-- COLUMNA PRINCIPAL -->
+
+
+                    <div class="cart-main">
+
+
+                        <!-- LISTA DE PRODUCTOS -->
+
+
+                        <section class="cart-panel">
+
+
+                            <div class="cart-panel-header">
+
+
+                                <div>
+
+                                    <h3>
+                                        Productos seleccionados
+                                    </h3>
+
+
+                                    <p id="cartItemCount">
+                                        0 productos en tu pedido
+                                    </p>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="clear-cart-btn"
+                                    id="clearCartBtn"
+                                >
+
+                                    Vaciar carrito
+
+                                </button>
+
+
+                            </div>
+
+
+
+                            <div
+                                class="cart-items"
+                                id="cartItems"
+                            >
+
+                                <!-- Productos generados por JavaScript -->
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <!-- ========================================
+                             DATOS DEL CLIENTE
+                        ========================================= -->
+
+
+                        <section class="customer-panel">
+
+
+                            <div class="customer-heading">
+
+
+                                <div class="customer-heading-icon">
+
+                                    👤
+
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Información del cliente
+                                    </h3>
+
+
+                                    <p>
+
+                                        Necesitamos estos datos para
+                                        gestionar tu pedido y poder
+                                        comunicarnos contigo.
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="form-grid">
+
+
+                                <!-- NOMBRE -->
+
+
+                                <div class="form-group">
+
+                                    <label for="customerName">
+
+                                        Nombre completo
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+
+                                    <input
+
+                                        type="text"
+
+                                        id="customerName"
+
+                                        name="customerName"
+
+                                        class="form-control"
+
+                                        placeholder="Ej. Christian Hernández"
+
+                                        autocomplete="name"
+
+                                        minlength="2"
+
+                                        maxlength="100"
+
+                                        required
+
+                                    >
+
+                                </div>
+
+
+
+                                <!-- TELÉFONO -->
+
+
+                                <div class="form-group">
+
+                                    <label for="customerPhone">
+
+                                        Teléfono de contacto
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+
+                                    <input
+
+                                        type="tel"
+
+                                        id="customerPhone"
+
+                                        name="customerPhone"
+
+                                        class="form-control"
+
+                                        placeholder="Ej. 8888 8888"
+
+                                        autocomplete="tel"
+
+                                        inputmode="tel"
+
+                                        maxlength="20"
+
+                                        required
+
+                                    >
+
+
+                                    <small class="form-hint">
+
+                                        Incluye tu número para que el
+                                        establecimiento pueda contactarte.
+
+                                    </small>
+
+                                </div>
+
+
+
+                                <!-- MODALIDAD DE ENTREGA -->
+
+
+                                <div class="form-group full-width">
+
+
+                                    <label>
+
+                                        ¿Cómo deseas recibir tu pedido?
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+
+
+                                    <div class="delivery-options">
+
+
+                                        <label class="delivery-option">
+
+                                            <input
+
+                                                type="radio"
+
+                                                name="deliveryMethod"
+
+                                                value="pickup"
+
+                                                checked
+
+                                            >
+
+
+                                            <span class="delivery-option-content">
+
+
+                                                <span class="delivery-icon">
+                                                    🏪
+                                                </span>
+
+
+                                                <span class="delivery-text">
+
+                                                    <strong>
+                                                        Retirar en sucursal
+                                                    </strong>
+
+                                                    <small>
+                                                        Coordinar el retiro por WhatsApp.
+                                                    </small>
+
+                                                </span>
+
+
+                                            </span>
+
+                                        </label>
+
+
+
+                                        <label class="delivery-option">
+
+                                            <input
+
+                                                type="radio"
+
+                                                name="deliveryMethod"
+
+                                                value="delivery"
+
+                                            >
+
+
+                                            <span class="delivery-option-content">
+
+
+                                                <span class="delivery-icon">
+                                                    🛵
+                                                </span>
+
+
+                                                <span class="delivery-text">
+
+                                                    <strong>
+                                                        Entrega a domicilio
+                                                    </strong>
+
+                                                    <small>
+                                                        Coordinar cobertura y costo de envío.
+                                                    </small>
+
+                                                </span>
+
+
+                                            </span>
+
+                                        </label>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <!-- DATOS DE DIRECCIÓN -->
+
+
+                                <div
+                                    class="delivery-address full-width"
+                                    id="deliveryAddress"
+                                >
+
+
+                                    <div class="form-group full-width">
+
+                                        <label for="customerAddress">
+
+                                            Dirección de entrega
+
+                                            <span class="required">*</span>
+
+                                        </label>
+
+
+                                        <input
+
+                                            type="text"
+
+                                            id="customerAddress"
+
+                                            name="customerAddress"
+
+                                            class="form-control"
+
+                                            placeholder="Barrio, calle, número de casa..."
+
+                                            autocomplete="street-address"
+
+                                            maxlength="180"
+
+                                        >
+
+                                    </div>
+
+
+
+                                    <div class="form-group">
+
+                                        <label for="addressReference">
+
+                                            Punto de referencia
+
+                                        </label>
+
+
+                                        <input
+
+                                            type="text"
+
+                                            id="addressReference"
+
+                                            name="addressReference"
+
+                                            class="form-control"
+
+                                            placeholder="Ej. Frente al parque"
+
+                                            maxlength="120"
+
+                                        >
+
+                                    </div>
+
+
+
+                                    <div class="form-group">
+
+                                        <label for="customerCity">
+
+                                            Ciudad o zona
+
+                                        </label>
+
+
+                                        <input
+
+                                            type="text"
+
+                                            id="customerCity"
+
+                                            name="customerCity"
+
+                                            class="form-control"
+
+                                            placeholder="Ej. Matagalpa"
+
+                                            maxlength="80"
+
+                                        >
+
+                                    </div>
+
+
+
+                                    <div class="delivery-note">
+
+                                        <span>ℹ️</span>
+
+                                        <span>
+
+                                            La disponibilidad del servicio
+                                            de entrega y su costo serán
+                                            confirmados directamente por
+                                            Wolf Bubble Tea mediante WhatsApp.
+
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <!-- NOTAS -->
+
+
+                                <div class="form-group full-width">
+
+                                    <label for="orderNotes">
+
+                                        Instrucciones adicionales
+
+                                    </label>
+
+
+                                    <textarea
+
+                                        id="orderNotes"
+
+                                        name="orderNotes"
+
+                                        class="form-control"
+
+                                        placeholder="¿Alguna indicación especial para tu pedido?"
+
+                                        maxlength="500"
+
+                                    ></textarea>
+
+
+                                    <small class="form-hint">
+
+                                        Este campo es opcional.
+
+                                    </small>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- VALIDACIÓN -->
+
+
+                            <div
+                                class="form-message"
+                                id="formMessage"
+                                role="alert"
+                            >
+
+                            </div>
+
+
+
+                            <!-- INFORMACIÓN WHATSAPP -->
+
+
+                            <div class="whatsapp-information">
+
+
+                                <span style="font-size:1.35rem">
+
+                                    ✓
+
+                                </span>
+
+
+                                <div>
+
+                                    <strong>
+                                        Confirmación mediante WhatsApp
+                                    </strong>
+
+
+                                    Tu pedido se preparará como un
+                                    mensaje para el establecimiento.
+                                    La aceptación, disponibilidad y
+                                    detalles de entrega serán confirmados
+                                    directamente por Wolf Bubble Tea.
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                    </div>
+
+
+
+                    <!-- ========================================
+                         COLUMNA DEL RESUMEN
+                    ========================================= -->
+
+
+                    <aside class="cart-sidebar">
+
+
+                        <section class="summary-panel">
+
+
+                            <div class="summary-header">
+
+                                <h3>
+                                    Resumen de tu pedido
+                                </h3>
+
+
+                                <p>
+                                    Revisa los detalles antes de continuar.
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="summary-content">
+
+
+                                <div class="summary-lines">
+
+
+                                    <div class="summary-line">
+
+                                        <span>
+                                            Productos
+                                        </span>
+
+
+                                        <strong id="summaryQuantity">
+                                            0
+                                        </strong>
+
+                                    </div>
+
+
+
+                                    <div class="summary-line">
+
+                                        <span>
+                                            Subtotal
+                                        </span>
+
+
+                                        <strong id="summarySubtotal">
+                                            C$ 0
+                                        </strong>
+
+                                    </div>
+
+
+
+                                    <div class="summary-line">
+
+                                        <span>
+                                            Entrega
+                                        </span>
+
+
+                                        <strong id="summaryDelivery">
+                                            Por coordinar
+                                        </strong>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <hr class="summary-divider">
+
+
+
+                                <div class="summary-total">
+
+
+                                    <span>
+                                        Total de productos
+                                    </span>
+
+
+                                    <strong id="summaryTotal">
+                                        C$ 0
+                                    </strong>
+
+
+                                </div>
+
+
+
+                                <div class="summary-warning">
+
+                                    ⚠️ El costo de envío, si aplica,
+                                    no está incluido. Será acordado
+                                    directamente por WhatsApp.
+
+                                </div>
+
+
+
+                                <button
+
+                                    type="submit"
+
+                                    class="checkout-btn"
+
+                                    id="checkoutBtn"
+
+                                    disabled
+
+                                >
+
+                                    <span>Confirmar pedido</span>
+
+                                    <span>↗</span>
+
+                                </button>
+
+
+
+                                <div class="summary-security">
+
+                                    💬 Continuar mediante WhatsApp
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <!-- AYUDA -->
+
+
+                        <div class="summary-help">
+
+
+                            <h4>
+                                ¿Necesitas ayuda?
+                            </h4>
+
+
+                            <p>
+
+                                ¿Tienes dudas sobre una bebida,
+                                una variante o tu pedido?
+                                Contacta directamente a Wolf.
+
+                            </p>
+
+
+                            <a
+                                href="https://wa.me/50581265669?text=Hola%20Wolf%20Bubble%20Tea%2C%20tengo%20una%20consulta%20sobre%20mi%20pedido."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                Hablar por WhatsApp ↗
+
+                            </a>
+
+
+                        </div>
+
+
+                    </aside>
+
+
+                </form>
+
+
+
+                <!-- ========================================
+                     BENEFICIOS
+                ========================================= -->
+
+
+                <section class="benefits-section">
+
+
+                    <div class="benefit-card">
+
+                        <div class="benefit-icon">
+                            🧋
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Personaliza tu pedido
+                            </strong>
+
+                            <p>
+                                Selecciona los tamaños y variantes disponibles.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="benefit-card">
+
+                        <div class="benefit-icon">
+                            💬
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Atención directa
+                            </strong>
+
+                            <p>
+                                Coordina los detalles con el establecimiento.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="benefit-card">
+
+                        <div class="benefit-icon">
+                            💗
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Tu experiencia Wolf
+                            </strong>
+
+                            <p>
+                                Disfruta de tus bebidas y preparaciones favoritas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+
+    <footer class="footer">
+
+        <div class="container">
+
+
+            <div class="footer-top">
+
+
+                <div>
+
+
+                    <a href="index.html" class="brand">
+
+                        <img
+                            src="logo.png"
+                            alt="Wolf Bubble Tea"
+                        >
+
+
+                        <div class="brand-text">
+
+                            <strong>WOLF</strong>
+
+                            <span>BUBBLE TEA</span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <p class="footer-description">
+
+                        Un mundo de sabores, colores y experiencias.
+                        Descubre tu nuevo momento favorito con Wolf.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="footer-links">
+
+
+                    <a href="index.html">
+                        Inicio
+                    </a>
+
+
+                    <a href="menu.html">
+                        Nuestro menú
+                    </a>
+
+
+                    <a href="menu.html#categorias">
+                        Categorías
+                    </a>
+
+
+                    <a href="carrito.html">
+                        Mi carrito
+                    </a>
+
+
+                    <a
+                        href="https://www.instagram.com/boobba_tea/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram ↗
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+
+                <p>
+
+                    © <span id="currentYear"></span>
+                    Wolf Bubble Tea. Todos los derechos reservados.
+
+                </p>
+
+
+                <p>
+
+                    Designed with ♡ by
+
+                    <a
+                        href="https://celorasolutions.vercel.app/es"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        Celora
+
+                    </a>
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ========================================
+         NOTIFICACIÓN
+    ========================================= -->
+
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        Producto actualizado.
+
+    </div>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+
+
+    <script>
+
+
+        /* ========================================
+           01. CONFIGURACIÓN GENERAL
+        ========================================= */
+
+
+        const CART_STORAGE_KEY = "wolfBubbleTeaCart";
+
+        const WHATSAPP_NUMBER = "50581265669";
+
+        const MINIMUM_PHONE_DIGITS = 8;
+
+        const MAXIMUM_QUANTITY = 99;
+
+
+        /*
+            IMPORTANTE:
+
+            Esta misma clave debe utilizarse en menu.html.
+
+            menu.html guarda:
+
+            {
+                key,
+                id,
+                name,
+                category,
+                variant,
+                price,
+                quantity,
+                image,
+                emoji
+            }
+
+        */
+
+
+
+        /* ========================================
+           02. REFERENCIAS DEL DOM
+        ========================================= */
+
+
+        const cartItemsContainer = document.getElementById(
+            "cartItems"
+        );
+
+
+        const cartItemCount = document.getElementById(
+            "cartItemCount"
+        );
+
+
+        const cartCount = document.getElementById(
+            "cartCount"
+        );
+
+
+        const summaryQuantity = document.getElementById(
+            "summaryQuantity"
+        );
+
+
+        const summarySubtotal = document.getElementById(
+            "summarySubtotal"
+        );
+
+
+        const summaryTotal = document.getElementById(
+            "summaryTotal"
+        );
+
+
+        const summaryDelivery = document.getElementById(
+            "summaryDelivery"
+        );
+
+
+        const emptyState = document.getElementById(
+            "emptyState"
+        );
+
+
+        const cartLayout = document.getElementById(
+            "checkoutForm"
+        );
+
+
+        const checkoutBtn = document.getElementById(
+            "checkoutBtn"
+        );
+
+
+        const checkoutForm = document.getElementById(
+            "checkoutForm"
+        );
+
+
+        const deliveryAddress = document.getElementById(
+            "deliveryAddress"
+        );
+
+
+        const customerAddress = document.getElementById(
+            "customerAddress"
+        );
+
+
+        const formMessage = document.getElementById(
+            "formMessage"
+        );
+
+
+        const toast = document.getElementById(
+            "toast"
+        );
+
+
+        let toastTimer = null;
+
+
+
+        /* ========================================
+           03. FORMATO DE PRECIOS
+        ========================================= */
+
+
+        function formatPrice(price) {
+
+            return "C$ " + Number(price).toLocaleString(
+                "es-NI"
+            );
+
+        }
+
+
+        function formatWhatsAppPrice(price) {
+
+            return "C$ " + Number(price).toLocaleString(
+                "es-NI"
+            );
+
+        }
+
+
+
+        /* ========================================
+           04. ESCAPAR TEXTO HTML
+        ========================================= */
+
+
+        function escapeHTML(value) {
+
+            return String(value ?? "").replace(
+
+                /[&<>"']/g,
+
+                character => ({
+
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+
+                })[character]
+
+            );
+
+        }
+
+
+
+        /* ========================================
+           05. NORMALIZAR CARRITO
+        ========================================= */
+
+
+        function normalizeCart(items) {
+
+
+            if (!Array.isArray(items)) {
+
+                return [];
+
+            }
+
+
+            return items
+
+                .filter(item => {
+
+                    return (
+
+                        item &&
+
+                        typeof item.id === "string" &&
+
+                        typeof item.name === "string" &&
+
+                        typeof item.variant === "string" &&
+
+                        Number.isFinite(Number(item.price)) &&
+
+                        Number(item.price) >= 0
+
+                    );
+
+                })
+
+
+                .map(item => {
+
+
+                    const price = Number(item.price);
+
+
+                    const quantity = Math.min(
+
+                        MAXIMUM_QUANTITY,
+
+                        Math.max(
+
+                            1,
+
+                            Math.floor(
+
+                                Number(item.quantity) || 1
+
+                            )
+
+                        )
+
+                    );
+
+
+                    const variant = String(
+                        item.variant
+                    );
+
+
+                    return {
+
+                        key: String(
+
+                            item.key ||
+
+                            `${item.id}__${variant}`
+
+                        ),
+
+                        id: String(item.id),
+
+                        name: String(item.name),
+
+                        category: String(
+                            item.category || "general"
+                        ),
+
+                        variant: variant,
+
+                        price: price,
+
+                        quantity: quantity,
+
+                        image: typeof item.image === "string"
+                            ? item.image
+                            : "",
+
+                        emoji: typeof item.emoji === "string"
+                            ? item.emoji
+                            : "🧋"
+
+                    };
+
+                });
+
+
+        }
+
+
+
+        /* ========================================
+           06. RECUPERAR CARRITO
+        ========================================= */
+
+
+        function getCart() {
+
+
+            try {
+
+
+                const stored = localStorage.getItem(
+                    CART_STORAGE_KEY
+                );
+
+
+                if (!stored) {
+
+                    return [];
+
+                }
+
+
+                const parsed = JSON.parse(stored);
+
+
+                return normalizeCart(parsed);
+
+
+            } catch (error) {
+
+
+                console.error(
+                    "Error al recuperar el carrito:",
+                    error
+                );
+
+
+                return [];
+
+            }
+
+
+        }
+
+
+
+        /* ========================================
+           07. GUARDAR CARRITO
+        ========================================= */
+
+
+        function saveCart(cart) {
+
+
+            try {
+
+
+                const normalized = normalizeCart(cart);
+
+
+                localStorage.setItem(
+
+                    CART_STORAGE_KEY,
+
+                    JSON.stringify(normalized)
+
+                );
+
+
+                return true;
+
+
+            } catch (error) {
+
+
+                console.error(
+                    "Error al guardar el carrito:",
+                    error
+                );
+
+
+                showToast(
+                    "No fue posible actualizar tu carrito."
+                );
+
+
+                return false;
+
+            }
+
+        }
+
+
+
+        /* ========================================
+           08. TOTALES
+        ========================================= */
+
+
+        function calculateCartTotals(cart) {
+
+
+            const quantity = cart.reduce(
+
+                (total, item) => {
+
+                    return total + item.quantity;
+
+                },
+
+                0
+
+            );
+
+
+            const subtotal = cart.reduce(
+
+                (total, item) => {
+
+                    return total + (
+
+                        item.price * item.quantity
+
+                    );
+
+                },
+
+                0
+
+            );
+
+
+            return {
+
+                quantity,
+                subtotal
+
+            };
+
+        }
+
+
+
+        /* ========================================
+           09. BADGE DEL CARRITO
+        ========================================= */
+
+
+        function updateCartBadge(cart = getCart()) {
+
+
+            const totals = calculateCartTotals(cart);
+
+
+            cartCount.textContent = totals.quantity;
+
+
+        }
+
+
+
+        /* ========================================
+           10. NOMBRES DE CATEGORÍAS
+        ========================================= */
+
+
+        const categoryNames = {
+
+            "frozen": "Frozen",
+
+            "milk-tea": "Milk Tea",
+
+            "proteins": "Proteínas",
+
+            "sodas": "Sodas italianas",
+
+            "special": "Batidos especiales",
+
+            "extras": "Toppings",
+
+            "korean": "Comida coreana"
+
+        };
+
+
+        function getCategoryName(category) {
+
+
+            return categoryNames[category] ||
+
+                "Wolf Bubble Tea";
+
+        }
+
+
+
+        /* ========================================
+           11. RENDERIZAR PRODUCTOS
+        ========================================= */
+
+
+        function renderCart() {
+
+
+            const cart = getCart();
+
+
+            const totals = calculateCartTotals(cart);
+
+
+            const isEmpty = cart.length === 0;
+
+
+            /* ESTADO VACÍO */
+
+
+            emptyState.classList.toggle(
+                "visible",
+                isEmpty
+            );
+
+
+            cartLayout.classList.toggle(
+                "hidden",
+                isEmpty
+            );
+
+
+            updateCartBadge(cart);
+
+
+            /* Si no hay productos */
+
+
+            if (isEmpty) {
+
+
+                cartItemsContainer.innerHTML = "";
+
+
+                cartItemCount.textContent =
+                    "0 productos en tu pedido";
+
+
+                updateSummary(totals);
+
+                return;
+
+            }
+
+
+
+            /* PRODUCTOS */
+
+
+            cartItemsContainer.innerHTML = cart.map(
+
+                item => {
+
+
+                    const lineTotal =
+
+                        item.price * item.quantity;
+
+
+                    return `
+
+                        <article
+
+                            class="cart-item"
+
+                            data-cart-item="${escapeHTML(item.key)}"
+
+                        >
+
+
+                            <!-- IMAGEN -->
+
+
+                            <div class="cart-item-image">
+
+
+                                <img
+
+                                    src="${escapeHTML(item.image)}"
+
+                                    alt="${escapeHTML(item.name)}"
+
+                                    loading="lazy"
+
+                                >
+
+
+                                <span class="cart-item-emoji">
+
+                                    ${escapeHTML(item.emoji)}
+
+                                </span>
+
+
+                            </div>
+
+
+
+                            <!-- INFORMACIÓN -->
+
+
+                            <div class="cart-item-info">
+
+
+                                <span class="cart-item-category">
+
+                                    ${escapeHTML(
+                                        getCategoryName(item.category)
+                                    )}
+
+                                </span>
+
+
+                                <h3 class="cart-item-name">
+
+                                    ${escapeHTML(item.name)}
+
+                                </h3>
+
+
+                                <span class="cart-item-variant">
+
+                                    ${escapeHTML(item.variant)}
+
+                                </span>
+
+
+                                <div class="cart-item-unit-price">
+
+                                    ${formatPrice(item.price)} / unidad
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- CONTROLES -->
+
+
+                            <div class="cart-item-controls">
+
+
+                                <div class="quantity-control">
+
+
+                                    <button
+
+                                        type="button"
+
+                                        class="quantity-btn"
+
+                                        data-decrease="${escapeHTML(item.key)}"
+
+                                        aria-label="Disminuir cantidad"
+
+                                        ${item.quantity <= 1 ? "disabled" : ""}
+
+                                    >
+
+                                        −
+
+                                    </button>
+
+
+                                    <span class="quantity-value">
+
+                                        ${item.quantity}
+
+                                    </span>
+
+
+                                    <button
+
+                                        type="button"
+
+                                        class="quantity-btn"
+
+                                        data-increase="${escapeHTML(item.key)}"
+
+                                        aria-label="Aumentar cantidad"
+
+                                        ${item.quantity >= MAXIMUM_QUANTITY ? "disabled" : ""}
+
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                </div>
+
+
+
+                                <strong class="item-subtotal">
+
+                                    ${formatPrice(lineTotal)}
+
+                                </strong>
+
+
+
+                                <button
+
+                                    type="button"
+
+                                    class="remove-item-btn"
+
+                                    data-remove="${escapeHTML(item.key)}"
+
+                                >
+
+                                    Eliminar
+
+                                </button>
+
+
+                            </div>
+
+
+                        </article>
+
+                    `;
+
+
+                }
+
+            ).join("");
+
+
+
+            /* CONTADOR */
+
+
+            cartItemCount.textContent =
+
+                totals.quantity +
+
+                (
+
+                    totals.quantity === 1
+
+                        ? " unidad en tu pedido"
+
+                        : " unidades en tu pedido"
+
+                );
+
+
+
+            /* RESUMEN */
+
+
+            updateSummary(totals);
+
+
+        }
+
+
+
+        /* ========================================
+           12. ACTUALIZAR RESUMEN
+        ========================================= */
+
+
+        function updateSummary(totals) {
+
+
+            summaryQuantity.textContent =
+                totals.quantity;
+
+
+            summarySubtotal.textContent =
+                formatPrice(totals.subtotal);
+
+
+            summaryTotal.textContent =
+                formatPrice(totals.subtotal);
+
+
+            const deliveryMethod =
+                getDeliveryMethod();
+
+
+            summaryDelivery.textContent =
+
+                deliveryMethod === "delivery"
+
+                    ? "Por coordinar"
+
+                    : "Retiro a coordinar";
+
+
+            checkoutBtn.disabled =
+                totals.quantity === 0;
+
+
+        }
+
+
+
+        /* ========================================
+           13. OBTENER MODALIDAD
+        ========================================= */
+
+
+        function getDeliveryMethod() {
+
+
+            const selected = document.querySelector(
+
+                'input[name="deliveryMethod"]:checked'
+
+            );
+
+
+            return selected
+                ? selected.value
+                : "pickup";
+
+        }
+
+
+
+        /* ========================================
+           14. CAMBIAR CANTIDAD
+        ========================================= */
+
+
+        function changeQuantity(key, difference) {
+
+
+            const cart = getCart();
+
+
+            const item = cart.find(
+
+                product => product.key === key
+
+            );
+
+
+            if (!item) {
+
+                return;
+
+            }
+
+
+            const nextQuantity =
+
+                item.quantity + difference;
+
+
+            if (nextQuantity < 1) {
+
+                return;
+
+            }
+
+
+            if (nextQuantity > MAXIMUM_QUANTITY) {
+
+                showToast(
+                    `El máximo permitido es ${MAXIMUM_QUANTITY} unidades.`
+                );
+
+                return;
+
+            }
+
+
+            item.quantity = nextQuantity;
+
+
+            if (!saveCart(cart)) {
+
+                return;
+
+            }
+
+
+            renderCart();
+
+
+            showToast(
+                "Cantidad actualizada ✓"
+            );
+
+
+        }
+
+
+
+        /* ========================================
+           15. ELIMINAR PRODUCTO
+        ========================================= */
+
+
+        function removeProduct(key) {
+
+
+            const cart = getCart();
+
+
+            const updatedCart = cart.filter(
+
+                item => item.key !== key
+
+            );
+
+
+            if (!saveCart(updatedCart)) {
+
+                return;
+
+            }
+
+
+            renderCart();
+
+
+            showToast(
+                "Producto eliminado del carrito."
+            );
+
+
+        }
+
+
+
+        /* ========================================
+           16. VACÍAR CARRITO
+        ========================================= */
+
+
+        function clearCart() {
+
+
+            const cart = getCart();
+
+
+            if (cart.length === 0) {
+
+                return;
+
+            }
+
+
+            const confirmed = window.confirm(
+
+                "¿Estás seguro de que deseas eliminar todos los productos de tu carrito?"
+
+            );
+
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+
+            if (!saveCart([])) {
+
+                return;
+
+            }
+
+
+            renderCart();
+
+
+            showToast(
+                "Tu carrito ha sido vaciado."
+            );
+
+
+        }
+
+
+
+        /* ========================================
+           17. EVENTOS DE LOS PRODUCTOS
+        ========================================= */
+
+
+        cartItemsContainer.addEventListener(
+
+            "click",
+
+            event => {
+
+
+                const increaseButton = event.target.closest(
+
+                    "[data-increase]"
+
+                );
+
+
+                const decreaseButton = event.target.closest(
+
+                    "[data-decrease]"
+
+                );
+
+
+                const removeButton = event.target.closest(
+
+                    "[data-remove]"
+
+                );
+
+
+
+                if (increaseButton) {
+
+
+                    changeQuantity(
+
+                        increaseButton.dataset.increase,
+
+                        1
+
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                if (decreaseButton) {
+
+
+                    changeQuantity(
+
+                        decreaseButton.dataset.decrease,
+
+                        -1
+
+                    );
+
+
+                    return;
+
+                }
+
+
+
+                if (removeButton) {
+
+
+                    removeProduct(
+
+                        removeButton.dataset.remove
+
+                    );
+
+
+                    return;
+
+                }
+
+
+            }
+
+        );
+
+
+
+        /* ========================================
+           18. EVENTO PARA VACIAR
+        ========================================= */
+
+
+        document.getElementById(
+            "clearCartBtn"
+        ).addEventListener(
+
+            "click",
+
+            clearCart
+
+        );
+
+
+
+        /* ========================================
+           19. IMÁGENES FALLIDAS
+        ========================================= */
+
+
+        cartItemsContainer.addEventListener(
+
+            "error",
+
+            event => {
+
+
+                const image = event.target;
+
+
+                if (image.tagName !== "IMG") {
+
+                    return;
+
+                }
+
+
+                const wrapper = image.closest(
+                    ".cart-item-image"
+                );
+
+
+                if (wrapper) {
+
+                    wrapper.classList.add(
+                        "image-fallback"
+                    );
+
+                }
+
+            },
+
+            true
+
+        );
+
+
+
+        /* ========================================
+           20. MODALIDAD DE ENTREGA
+        ========================================= */
+
+
+        function updateDeliveryFields() {
+
+
+            const method = getDeliveryMethod();
+
+
+            const isDelivery =
+                method === "delivery";
+
+
+            deliveryAddress.classList.toggle(
+
+                "visible",
+
+                isDelivery
+
+            );
+
+
+            customerAddress.required = isDelivery;
+
+
+            updateSummary(
+                calculateCartTotals(getCart())
+            );
+
+
+        }
+
+
+
+        document.querySelectorAll(
+
+            'input[name="deliveryMethod"]'
+
+        ).forEach(input => {
+
+
+            input.addEventListener(
+
+                "change",
+
+                updateDeliveryFields
+
+            );
+
+        });
+
+
+
+        /* ========================================
+           21. VALIDACIÓN DE FORMULARIO
+        ========================================= */
+
+
+        function getCustomerData() {
+
+
+            return {
+
+                name: document.getElementById(
+                    "customerName"
+                ).value.trim(),
+
+
+                phone: document.getElementById(
+                    "customerPhone"
+                ).value.trim(),
+
+
+                method: getDeliveryMethod(),
+
+
+                address: document.getElementById(
+                    "customerAddress"
+                ).value.trim(),
+
+
+                reference: document.getElementById(
+                    "addressReference"
+                ).value.trim(),
+
+
+                city: document.getElementById(
+                    "customerCity"
+                ).value.trim(),
+
+
+                notes: document.getElementById(
+                    "orderNotes"
+                ).value.trim()
+
+            };
+
+        }
+
+
+
+        /* ========================================
+           22. MENSAJES DE ERROR
+        ========================================= */
+
+
+        function showFormError(message, element = null) {
+
+
+            formMessage.textContent = message;
+
+
+            formMessage.classList.add(
+                "visible"
+            );
+
+
+            if (element) {
+
+                element.classList.add(
+                    "invalid"
+                );
+
+
+                element.focus();
+
+            }
+
+
+            formMessage.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+        }
+
+
+
+        function clearFormError() {
+
+
+            formMessage.textContent = "";
+
+
+            formMessage.classList.remove(
+                "visible"
+            );
+
+
+            document.querySelectorAll(
+                ".form-control"
+            ).forEach(input => {
+
+                input.classList.remove(
+                    "invalid"
+                );
+
+            });
+
+        }
+
+
+
+        /* ========================================
+           23. VALIDAR DATOS DEL CLIENTE
+        ========================================= */
+
+
+        function validateCustomerData() {
+
+
+            clearFormError();
+
+
+            const data = getCustomerData();
+
+
+
+            /* CARRITO VACÍO */
+
+
+            if (getCart().length === 0) {
+
+
+                showFormError(
+                    "Tu carrito está vacío. Agrega productos antes de continuar."
+                );
+
+
+                return false;
+
+            }
+
+
+
+            /* NOMBRE */
+
+
+            if (data.name.length < 2) {
+
+
+                showFormError(
+
+                    "Por favor, introduce tu nombre completo.",
+
+                    document.getElementById("customerName")
+
+                );
+
+
+                return false;
+
+            }
+
+
+
+            /* TELÉFONO */
+
+
+            const phoneDigits = data.phone.replace(
+
+                /\D/g,
+
+                ""
+
+            );
+
+
+            if (
+                phoneDigits.length < MINIMUM_PHONE_DIGITS ||
+                phoneDigits.length > 15
+            ) {
+
+
+                showFormError(
+
+                    "Introduce un número de teléfono válido para poder contactarte.",
+
+                    document.getElementById("customerPhone")
+
+                );
+
+
+                return false;
+
+            }
+
+
+
+            /* ENTREGA A DOMICILIO */
+
+
+            if (data.method === "delivery" && !data.address) {
+
+
+                showFormError(
+
+                    "Necesitamos tu dirección para coordinar la entrega.",
+
+                    customerAddress
+
+                );
+
+
+                return false;
+
+            }
+
+
+
+            return true;
+
+        }
+
+
+
+        /* ========================================
+           24. CONSTRUIR MENSAJE DE WHATSAPP
+        ========================================= */
+
+
+        function buildWhatsAppMessage() {
+
+
+            const cart = getCart();
+
+
+            const totals =
+                calculateCartTotals(cart);
+
+
+            const customer =
+                getCustomerData();
+
+
+            const now = new Date();
+
+
+            const date = now.toLocaleDateString(
+                "es-NI",
+                {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                }
+            );
+
+
+            const time = now.toLocaleTimeString(
+                "es-NI",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+
+
+            /* ENCABEZADO */
+
+
+            let message = "";
+
+
+            message += "🐺 *NUEVO PEDIDO - WOLF BUBBLE TEA*\n";
+
+            message += "━━━━━━━━━━━━━━━━━━━━\n\n";
+
+
+            message += "👤 *DATOS DEL CLIENTE*\n";
+
+            message += `Nombre: ${customer.name}\n`;
+
+            message += `Teléfono: ${customer.phone}\n\n`;
+
+
+            /* MODALIDAD */
+
+
+            message += "📦 *MODALIDAD DE ENTREGA*\n";
+
+
+            if (customer.method === "pickup") {
+
+
+                message += "Retiro en sucursal\n";
+
+                message += "Lugar y horario: Por coordinar con Wolf.\n\n";
+
+
+            } else {
+
+
+                message += "Entrega a domicilio\n";
+
+                message += `Dirección: ${customer.address}\n`;
+
+
+                if (customer.city) {
+
+                    message += `Ciudad / zona: ${customer.city}\n`;
+
+                }
+
+
+                if (customer.reference) {
+
+                    message += `Referencia: ${customer.reference}\n`;
+
+                }
+
+
+                message +=
+                    "Costo y cobertura: Por coordinar.\n\n";
+
+            }
+
+
+
+            /* PRODUCTOS */
+
+
+            message += "🛒 *DETALLE DEL PEDIDO*\n";
+
+            message += "━━━━━━━━━━━━━━━━━━━━\n";
+
+
+            cart.forEach((item, index) => {
+
+
+                const lineTotal =
+                    item.price * item.quantity;
+
+
+                message += `\n*${index + 1}. ${item.name}*\n`;
+
+                message += `Presentación: ${item.variant}\n`;
+
+                message += `Cantidad: ${item.quantity}\n`;
+
+                message += `Precio unitario: ${formatWhatsAppPrice(item.price)}\n`;
+
+                message += `Subtotal: ${formatWhatsAppPrice(lineTotal)}\n`;
+
+
+            });
+
+
+
+            /* RESUMEN */
+
+
+            message += "\n━━━━━━━━━━━━━━━━━━━━\n";
+
+            message +=
+                `📋 *Cantidad de unidades: ${totals.quantity}*\n`;
+
+            message +=
+                `💰 *TOTAL DE PRODUCTOS: ${formatWhatsAppPrice(totals.subtotal)}*\n`;
+
+
+            message +=
+                "ℹ️ El costo de envío, si aplica, se coordinará por separado.\n";
+
+
+
+            /* NOTAS */
+
+
+            if (customer.notes) {
+
+
+                message += "\n📝 *INSTRUCCIONES ADICIONALES*\n";
+
+                message += `${customer.notes}\n`;
+
+            }
+
+
+
+            /* DATOS FINALES */
+
+
+            message += "\n━━━━━━━━━━━━━━━━━━━━\n";
+
+            message += `📅 Fecha: ${date}\n`;
+
+            message += `🕒 Hora: ${time}\n\n`;
+
+
+            message +=
+                "Hola, quisiera confirmar la disponibilidad de este pedido. ¡Muchas gracias!";
+
+
+            return message;
+
+        }
+
+
+
+        /* ========================================
+           25. ENVIAR PEDIDO
+        ========================================= */
+
+
+        function sendOrderToWhatsApp() {
+
+
+            if (!validateCustomerData()) {
+
+                return;
+
+            }
+
+
+            const message =
+                buildWhatsAppMessage();
+
+
+            const url =
+
+                "https://wa.me/" +
+
+                WHATSAPP_NUMBER +
+
+                "?text=" +
+
+                encodeURIComponent(message);
+
+
+
+            /*
+                Abrimos WhatsApp en una pestaña nueva.
+
+                El carrito NO se elimina automáticamente,
+                porque el mensaje enviado no significa
+                que el establecimiento haya confirmado el pedido.
+            */
+
+
+            const whatsappWindow = window.open(
+                url,
+                "_blank"
+            );
+
+
+            if (whatsappWindow) {
+
+                whatsappWindow.opener = null;
+
+            } else {
+
+                window.location.href = url;
+
+            }
+
+
+        }
+
+
+
+        /* ========================================
+           26. EVENTO DE CONFIRMACIÓN
+        ========================================= */
+
+
+        checkoutForm.addEventListener(
+
+            "submit",
+
+            event => {
+
+
+                event.preventDefault();
+
+
+                sendOrderToWhatsApp();
+
+
+            }
+
+        );
+
+
+
+        /* ========================================
+           27. ERRORES EN CAMPOS
+        ========================================= */
+
+
+        document.querySelectorAll(
+            ".form-control"
+        ).forEach(input => {
+
+
+            input.addEventListener(
+                "input",
+                () => {
+
+                    input.classList.remove(
+                        "invalid"
+                    );
+
+                    formMessage.classList.remove(
+                        "visible"
+                    );
+
+                }
+            );
+
+
+        });
+
+
+
+        /* ========================================
+           28. TOAST
+        ========================================= */
+
+
+        function showToast(message) {
+
+
+            toast.textContent = message;
+
+
+            toast.classList.add(
+                "visible"
+            );
+
+
+            clearTimeout(toastTimer);
+
+
+            toastTimer = setTimeout(() => {
+
+
+                toast.classList.remove(
+                    "visible"
+                );
+
+
+            }, 2300);
+
+
+        }
+
+
+
+        /* ========================================
+           29. NAVBAR RESPONSIVE
+        ========================================= */
+
+
+        const menuToggle = document.getElementById(
+            "menuToggle"
+        );
+
+
+        const navRight = document.getElementById(
+            "navRight"
+        );
+
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+
+                const isOpen =
+                    navRight.classList.toggle("active");
+
+
+                menuToggle.textContent =
+                    isOpen ? "✕" : "☰";
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+            }
+        );
+
+
+
+        navRight.querySelectorAll("a").forEach(link => {
+
+
+            link.addEventListener(
+                "click",
+                () => {
+
+
+                    navRight.classList.remove(
+                        "active"
+                    );
+
+
+                    menuToggle.textContent = "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                }
+            );
+
+
+        });
+
+
+
+        /* ========================================
+           30. SINCRONIZACIÓN ENTRE PESTAÑAS
+        ========================================= */
+
+
+        window.addEventListener(
+            "storage",
+            event => {
+
+
+                if (
+                    event.key === CART_STORAGE_KEY ||
+                    event.key === null
+                ) {
+
+
+                    renderCart();
+
+
+                }
+
+            }
+        );
+
+
+
+        /* ========================================
+           31. AÑO AUTOMÁTICO
+        ========================================= */
+
+
+        document.getElementById(
+            "currentYear"
+        ).textContent = new Date().getFullYear();
+
+
+
+        /* ========================================
+           32. INICIALIZACIÓN
+        ========================================= */
+
+
+        function initializeCart() {
+
+
+            renderCart();
+
+
+            updateDeliveryFields();
+
+
+            updateCartBadge();
+
+
+        }
+
+
+        initializeCart();
+
+
+    </script>
+
+
+</body>
+
+</html>
